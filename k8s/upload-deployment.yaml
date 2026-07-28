@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: upload-service
-        image: sne16/upload-service:11
+        image: sne16/upload-service:13
         imagePullPolicy: Always
 
         ports:
