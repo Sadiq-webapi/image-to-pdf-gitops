@@ -103,7 +103,7 @@ Running Application
 
 Application Before Update
 
-![Application Before Update](docs/images/old-app.png)
+![Application Before Update](docs/images/old_app.png)
 
 ## 1. Developer Push
 
@@ -252,7 +252,7 @@ upload-service:v12
 converter-service:v12
 ```
 
-![Rollout](docs/images/pods-runnning.png)
+![Rollout](docs/images/pods-running.png)
 
 Kubernetes:
 
