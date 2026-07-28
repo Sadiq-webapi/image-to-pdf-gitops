@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: upload-service
+  namespace: image-to-pdf
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: upload-service
+
+  template:
+    metadata:
+      labels:
+        app: upload-service
+
+    spec:
+      containers:
+      - name: upload-service
+        image: sne16/upload-service:latest
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 8000
+
+        env:
+        - name: STORAGE_PATH
+          valueFrom:
+            configMapKeyRef:
+              name: image-to-pdf-config
+              key: STORAGE_PATH
+
+        - name: CONVERTER_URL
+          valueFrom:
+            configMapKeyRef:
+              name: image-to-pdf-config
+              key: CONVERTER_URL
+
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+
+
+        volumeMounts:
+        - name: shared-storage
+          mountPath: /shared
+
+      volumes:
+      - name: shared-storage
+        persistentVolumeClaim:
+          claimName: image-to-pdf-pvc

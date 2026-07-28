@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: image-to-pdf-ingress
+  namespace: image-to-pdf
+
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+
+spec:
+  ingressClassName: nginx
+
+  rules:
+
+    - host: image-to-pdf.local
+
+      http:
+
+        paths:
+
+          - path: /upload
+            pathType: Prefix
+
+            backend:
+
+              service:
+
+                name: upload-service
+
+                port:
+
+                  number: 8000
+
+          - path: /docs
+            pathType: Prefix
+            backend:
+              service:
+                name: upload-service
+                port:
+                  number: 8000
+
+          - path: /openapi.json
+            pathType: Prefix
+            backend:
+              service:
+                name: upload-service
+                port:
+                  number: 8000

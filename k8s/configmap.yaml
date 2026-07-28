@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: image-to-pdf-config
+  namespace: image-to-pdf
+
+data:
+  STORAGE_PATH: "/shared"
+  CONVERTER_URL: "http://converter-service:8000/convert"

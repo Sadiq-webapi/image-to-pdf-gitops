@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: converter-service
+  namespace: image-to-pdf
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: converter-service
+
+  template:
+    metadata:
+      labels:
+        app: converter-service
+
+    spec:
+      containers:
+      - name: converter-service
+        image: sne16/converter-service:latest
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 8000
+
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+
+        volumeMounts:
+        - name: shared-storage
+          mountPath: /shared
+
+      volumes:
+      - name: shared-storage
+        persistentVolumeClaim:
+          claimName: image-to-pdf-pvc
