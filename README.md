@@ -15,45 +15,7 @@ The entire software delivery lifecycle is automated using **Jenkins, Docker, Kub
 
 # 🏗️ Architecture
 
-```
-Developer
-   |
-   | Git Push
-   |
-   v
-Application Repository
-   |
-   | GitHub Webhook
-   |
-   v
-Jenkins CI Pipeline
-   |
-   |-- Run Tests
-   |-- Build Docker Images
-   |-- Trivy Security Scan
-   |-- Push Images
-   |
-   v
-Docker Hub
-   |
-   | Update Image Tag
-   |
-   v
-GitOps Repository
-   |
-   | Continuous Monitoring
-   |
-   v
-Argo CD
-   |
-   | Sync Desired State
-   |
-   v
-Kubernetes Cluster
-   |
-   v
-Running Application
-```
+![Application Before Update](docs/images/architecture.png)
 
 ---
 
