@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: converter-service
-        image: sne16/converter-service:latest
+        image: sne16/converter-service:BUILD_NUMBER
         imagePullPolicy: Always
 
         ports:
