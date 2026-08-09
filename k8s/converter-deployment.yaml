@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: converter-service
-        image: dockerhubusername/converter-service:13
+        image: mohamedsadiq9741/converter-service:13
         imagePullPolicy: Always
 
         ports:
