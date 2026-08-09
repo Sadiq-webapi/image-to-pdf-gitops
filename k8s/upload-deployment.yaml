@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: upload-service
-        image: mohamedsadiq9741/upload-service:13
+        image: nginx:alpine
         imagePullPolicy: Always
 
         ports:
